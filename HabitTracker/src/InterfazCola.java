@@ -6,5 +6,6 @@ public interface InterfazCola
 	String front() throws ExceptionIsEmpty;
 	String back() throws ExceptionIsEmpty;
 	String search() throws ExceptionIsEmpty;
+	void deleteQueue();
 	boolean isEmpty();
 }

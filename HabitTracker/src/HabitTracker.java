@@ -1,3 +1,5 @@
+import java.util.Scanner;
+@SuppressWarnings("resource")
 
 public class HabitTracker
 {
@@ -10,5 +12,19 @@ public class HabitTracker
  		watch.stop();
  		long result = watch.getTime();
  		*/
+		
+		Cola aplicaciones = new Cola();
+		String aplicacion = "";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingresar 5 aplicaciones que desee trackear: \n");
+		for(int i = 0; i<5; i++)
+		{
+			aplicacion = sc.nextLine();
+			aplicaciones.enQueue(aplicacion);
+		}
+		System.out.println("Aplicaciones ingresadas: \n" + aplicaciones);
+		
+		aplicaciones.deleteQueue();
+		System.out.println("Se eliminaron todas las aplicaciones... \n" + aplicaciones);
 	}
 }

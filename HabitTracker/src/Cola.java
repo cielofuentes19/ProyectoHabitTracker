@@ -1,28 +1,39 @@
 
 public class Cola implements InterfazCola
 {
-	private Node aplicaciones;
-	private int primero;
-	private int ultimo;
-	private int numElem;
+	private Node primero;
+	private Node ultimo;
 	
-	public Cola(int primero, int ultimo, int numElem)
+	public Cola(Node primero, Node ultimo)
 	{
 		super();
 		this.primero = primero;
 		this.ultimo = ultimo;
-		this.numElem = numElem;
 	}
-	
+
 	public Cola()
 	{
-		this.aplicaciones = null;
+		this.primero = null;
+		this.ultimo = null;
 	}
 
 	//Insertar aplicaciones en la cola
 	public void enQueue(String x)
 	{
+		Node nuevo = new Node(x);
 		
+		if(this.isEmpty())
+		{
+			this.primero = nuevo;
+			this.primero.setNext(null);
+			this.ultimo = nuevo;
+		}
+		else
+		{
+			this.ultimo.setNext(nuevo);
+			nuevo.setNext(null);
+			this.ultimo = nuevo;
+		}
 	}
 
 	//Eliminar aplicaciones en la cola
@@ -46,12 +57,37 @@ public class Cola implements InterfazCola
 	//Validar si la cola está vacía
 	public boolean isEmpty() 
 	{
-		return false;
+		return this.primero == null;
 	}
 
 	//Buscar aplicacion en la cola
 	public String search() throws ExceptionIsEmpty
 	{
 		return null;
+	}
+	
+	public String toString()
+	{
+		String str = "";
+		Node aux = this.primero;
+		
+		if(primero != null)
+		{
+			while(aux != null)
+			{
+				str += aux.getData() + "\n";
+				aux = aux.getNext();				
+			}	
+			return str;
+		}
+		else
+			return null;
+	}
+
+	//Eliminar todos las aplicaciones de la cola
+	public void deleteQueue()
+	{
+		while(this.primero != null)
+			this.primero = this.primero.getNext();
 	}
 }
