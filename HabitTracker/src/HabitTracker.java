@@ -25,7 +25,7 @@ public class HabitTracker
 		}
 		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
 		//Se prueba el metodo front
-		System.out.println("El front de la cola es: " + aplicaciones.front(aplicacion) + "\n");
+		System.out.println("El front de la cola es: " + aplicaciones.front() + "\n");
 		//Se prueba el metodo deleteQueue
 		aplicaciones.deleteQueue();
 		System.out.println("Se eliminaron todas las aplicaciones... " + aplicaciones);

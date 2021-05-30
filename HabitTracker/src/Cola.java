@@ -43,13 +43,10 @@ public class Cola implements InterfazCola
 	}
 
 	//Retorna elemento final de la cola
-	public Node front(String x) throws ExceptionIsEmpty
+	public Node front() throws ExceptionIsEmpty
 	{
-		Node nuevo = new Node(x);
-		
 		if(!this.isEmpty())
 		{
-			this.primero = nuevo;
 			return this.primero;
 		}
 		else
