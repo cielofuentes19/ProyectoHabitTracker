@@ -42,7 +42,7 @@ public class Cola implements InterfazCola
 		return null;
 	}
 
-	//Retorna elemento final de la cola
+	//Retorna elemento inicial de la cola
 	public Node front() throws ExceptionIsEmpty
 	{
 		if(!this.isEmpty())
@@ -55,10 +55,17 @@ public class Cola implements InterfazCola
 		}
 	}
 
-	//Retorna elemento inicial de la cola
-	public String back() throws ExceptionIsEmpty
+	//Retorna elemento final de la cola
+	public Node back() throws ExceptionIsEmpty
 	{
-		return null;
+		if(!this.isEmpty())
+		{
+			return this.ultimo;
+		}
+		else
+		{
+			throw new ExceptionIsEmpty ("La cola esta vacia. ");
+		}
 	}
 
 	//Validar si la cola está vacía
