@@ -3,8 +3,6 @@ public class Node
 {
 	private String data;
 	private Node next;
-	public int dato;
-	public Node siguiente;
 
 	public Node(String data)
 	{
