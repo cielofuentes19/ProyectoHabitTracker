@@ -1,8 +1,10 @@
-
+import java.util.Scanner;
 public class Cola implements InterfazCola
 {
 	private Node primero;
 	private Node ultimo;
+	Scanner teclado = new Scanner(System.in);
+	
 	
 	public Cola(Node primero, Node ultimo)
 	{
@@ -37,9 +39,32 @@ public class Cola implements InterfazCola
 	}
 
 	//Eliminar aplicaciones en la cola
-	public String deQueue() throws ExceptionIsEmpty
+	public void deQueue(String x)
 	{
-		return null;
+		Node actual = new Node(x);
+		actual = primero;
+		Node anterior = new Node(x);
+		anterior = null;
+		boolean encontrado = false;
+		System.out.print("ingrese el dato que desea eliminar");
+		int nodoBuscado = teclado.nextInt();
+		if(primero != null) {
+			while(actual != null && encontrado != true) {
+				if(actual.dato == nodoBuscado) {
+					System.out.print("\n nodo con el dato (" +actual.dato+ ")encontrado \n" );
+					encontrado = true;
+				}
+				anterior = actual;
+				actual = actual.siguiente;
+
+			}
+			if(!encontrado) {
+				System.out.println("\n nodo no encontrado");
+			}
+			else {
+				System.out.println("\n la cola se encuentra vacia");
+			}
+		}
 	}
 
 	//Retorna elemento final de la cola
@@ -103,5 +128,11 @@ public class Cola implements InterfazCola
 		}
 		else
 			return null;
+	}
+
+	@Override
+	public String deQueue() throws ExceptionIsEmpty {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
