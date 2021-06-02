@@ -38,7 +38,9 @@ public class HabitTracker
 					System.out.println("La aplicación " + aplicacion + " sí se encuentra en la cola. \n");
 				else
 					System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
-				
+		//Se prueba el metodo eliminar 
+		aplicaciones.deQueue("word");
+		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
 		//Se prueba el metodo deleteQueue
 		aplicaciones.deleteQueue();
 		System.out.println("Se eliminaron todas las aplicaciones... " + aplicaciones);

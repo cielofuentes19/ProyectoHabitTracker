@@ -37,11 +37,57 @@ public class Cola implements InterfazCola
 	}
 
 	//Eliminar aplicaciones en la cola
-	public String deQueue() throws ExceptionIsEmpty
+	public void deQueue(String x) throws ExceptionIsEmpty, ItemNoFound
 	{
-		return null;
-	}
-
+		Node actual = new Node(x);
+		actual = this.primero;
+		Node anterior = null;
+		if (actual==null) 
+		{
+			throw new ExceptionIsEmpty("No hay elementos en la cola...");
+			}
+		boolean busqueda = this.search(x);
+		if(busqueda == false) 
+		{
+			throw new ItemNoFound("el nodo " + x + "no se ecuentra");
+			}
+		else 
+		{
+				while(actual!=null) 
+				{
+					if(actual.getData()==x) 
+					{
+						if(actual == this.primero) 
+						{
+							this.primero = this.primero.getNext();
+							System.out.println("\n nodo eliminado");
+						}
+						else if(actual == this.ultimo) 
+						{
+							anterior = this.ultimo;
+		                    this.ultimo = this.ultimo.getNext();
+							anterior.setNext(null);
+							this.ultimo = anterior;
+							anterior = null;
+							System.out.println("\n nodo eliminado");
+						}
+						else 
+						{
+							anterior = actual.getNext();
+		                    actual.setNext(anterior.getNext());
+		                    anterior = null;
+		                    System.out.println("\n nodo eliminado");
+						}
+					}
+				}
+				anterior = actual;
+				actual = actual.getNext();
+			}
+			
+		}
+		
+	
+	
 	//Retorna elemento inicial de la cola
 	public Node front() throws ExceptionIsEmpty
 	{

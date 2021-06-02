@@ -2,7 +2,7 @@
 public interface InterfazCola
 {
 	void enQueue(String x);
-	String deQueue() throws ExceptionIsEmpty;
+	void deQueue(String x) throws ExceptionIsEmpty,ItemNoFound;
 	Node front() throws ExceptionIsEmpty;
 	Node back() throws ExceptionIsEmpty;
 	boolean search(String x) throws ItemNoFound;
