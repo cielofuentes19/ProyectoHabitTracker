@@ -82,9 +82,18 @@ public class Cola implements InterfazCola
 	}
 
 	//Buscar aplicacion en la cola
-	public String search() throws ExceptionIsEmpty
+	public boolean search(String x) throws ItemNoFound
 	{
-		return null;
+		if (this.isEmpty())
+			throw new ItemNoFound("No hay elementos en la cola...");
+		else 
+		{
+			Node aux = this.primero;
+			for (int i = 0; aux != null; aux = aux.getNext(), i++) 
+				if (aux.getData().equals(x))
+					return true;
+			return false;
+		}
 	}
 	
 	//Eliminar todos las aplicaciones de la cola
