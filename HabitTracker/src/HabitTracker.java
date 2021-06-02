@@ -15,12 +15,15 @@ public class HabitTracker
 		
 		Cola aplicaciones = new Cola();
 		String aplicacion = "";
-		Scanner sc = new Scanner(System.in);
+		Scanner sc1 = new Scanner(System.in);
+		Scanner sc2 = new Scanner(System.in);
+		System.out.println("Ingrese el numero de aplicaciones a trackear: ");
+		int nroapps = sc1.nextInt();
 		//Se prueba el metodo Insert
-		System.out.println("Ingresar 5 aplicaciones que desee trackear: ");
-		for(int i = 0; i<5; i++)
+		System.out.println("Ingresar las "+nroapps+" aplicaciones que desea trackear: ");
+		for(int i = 0; i<nroapps; i++)
 		{
-			aplicacion = sc.nextLine();
+			aplicacion = sc2.nextLine();
 			aplicaciones.enQueue(aplicacion);
 		}
 		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
