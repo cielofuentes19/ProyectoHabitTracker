@@ -37,12 +37,58 @@ public class Cola implements InterfazCola
 	}
 
 	//Eliminar aplicaciones en la cola
-	public String deQueue() throws ExceptionIsEmpty
+	public void deQueue(String x) throws ExceptionIsEmpty, ItemNoFound
 	{
-		return null;
-	}
-
-	//Retorna elemento final de la cola
+		Node actual = new Node(x);
+		actual = this.primero;
+		Node anterior = null;
+		if (actual==null) 
+		{
+			throw new ExceptionIsEmpty("No hay elementos en la cola...");
+			}
+		boolean busqueda = this.search(x);
+		if(busqueda == false) 
+		{
+			throw new ItemNoFound("el nodo " + x + "no se ecuentra");
+			}
+		else 
+		{
+				while(actual!=null) 
+				{
+					if(actual.getData()==x) 
+					{
+						if(actual == this.primero) 
+						{
+							this.primero = this.primero.getNext();
+							System.out.println("\n nodo eliminado");
+						}
+						else if(actual == this.ultimo) 
+						{
+							anterior = this.ultimo;
+		                    this.ultimo = this.ultimo.getNext();
+							anterior.setNext(null);
+							this.ultimo = anterior;
+							anterior = null;
+							System.out.println("\n nodo eliminado");
+						}
+						else 
+						{
+							anterior = actual.getNext();
+		                    actual.setNext(anterior.getNext());
+		                    anterior = null;
+		                    System.out.println("\n nodo eliminado");
+						}
+					}
+				}
+				anterior = actual;
+				actual = actual.getNext();
+			}
+			
+		}
+		
+	
+	
+	//Retorna elemento inicial de la cola
 	public Node front() throws ExceptionIsEmpty
 	{
 		if(!this.isEmpty())
@@ -55,10 +101,17 @@ public class Cola implements InterfazCola
 		}
 	}
 
-	//Retorna elemento inicial de la cola
-	public String back() throws ExceptionIsEmpty
+	//Retorna elemento final de la cola
+	public Node back() throws ExceptionIsEmpty
 	{
-		return null;
+		if(!this.isEmpty())
+		{
+			return this.ultimo;
+		}
+		else
+		{
+			throw new ExceptionIsEmpty ("La cola esta vacia. ");
+		}
 	}
 
 	//Validar si la cola está vacía
@@ -75,9 +128,18 @@ public class Cola implements InterfazCola
 	}
 
 	//Buscar aplicacion en la cola
-	public String search() throws ExceptionIsEmpty
+	public boolean search(String x) throws ItemNoFound
 	{
-		return null;
+		if (this.isEmpty())
+			throw new ItemNoFound("No hay elementos en la cola...");
+		else 
+		{
+			Node aux = this.primero;
+			for (int i = 0; aux != null; aux = aux.getNext(), i++) 
+				if (aux.getData().equals(x))
+					return true;
+			return false;
+		}
 	}
 	
 	//Eliminar todos las aplicaciones de la cola
