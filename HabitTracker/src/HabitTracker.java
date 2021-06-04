@@ -15,7 +15,7 @@ public class HabitTracker
 		Scanner sc = new Scanner(System.in);
 		
 		//Ingreso de Usuario
-		
+	
 		System.out.println("\n¿Cuenta con un usuario? true or false: ");
 		boolean respuesta = sc.nextBoolean();
 		
@@ -259,27 +259,29 @@ public class HabitTracker
 			System.out.println("\nIngrese su contraseña: ");
 			String contraseña = sc.next();
 			
-			if(pregunta=="E")
+			switch(pregunta)
 			{
-				estu.validarUsuario(usuario, contraseña);
-				validar = estu.validarUsuario(usuario, contraseña);
-			}
+				case("E"):
+				{
+					validar = estu.validarUsuario(usuario, contraseña);
+					break;
+				}
+					
+				case("T"):	
+				{
+					validar = tra.validarUsuario(usuario, contraseña);
+					break;
+				}
 				
-			
-			if(pregunta=="T")		
-			{
-				tra.validarUsuario(usuario, contraseña);
-				validar = tra.validarUsuario(usuario, contraseña);
+				case("U"):	
+				{
+					validar = usua.validarUsuario(usuario, contraseña);
+					break;
+				}
+				
+				default: 
+					validar=true;
 			}
-			
-			if(pregunta=="U")		
-			{
-				usua.validarUsuario(usuario, contraseña);
-				validar = usua.validarUsuario(usuario, contraseña);
-			}
-			
-			else
-				validar = false;
 		}	
 		
 		/*
@@ -308,34 +310,58 @@ public class HabitTracker
 		}
 		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
 		
-		//Se prueba el metodo front
-		System.out.println("El front de la cola es: " + aplicaciones.front() + "\n");
+		Scanner scCon = new Scanner(System.in);
+		boolean confirma = true;
 		
+		//Se prueba el metodo front
+		System.out.println("¿Desea saber el front de la cola?");
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+			System.out.println("El front de la cola es: " + aplicaciones.front() + "\n");
+
 		//Se prueba el metodo back
-		System.out.println("El back de la cola es: " + aplicaciones.back() + "\n");
+		System.out.println("¿Desea saber el back de la cola?");
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+			System.out.println("El back de la cola es: " + aplicaciones.back() + "\n");
 		
 		//Se prueba el metodo search
-		System.out.println("Ingresar la aplicación que se quiere buscar: ");
-		aplicacion = sc4.next();
-		if (aplicaciones.search(aplicacion) == true)
-			System.out.println("La aplicación " + aplicacion + " sí se encuentra en la cola. \n");
-		else
-			System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+		System.out.println("¿Desea buscar una aplicacion?");
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+		{
+			System.out.println("Ingresar la aplicación que se quiere buscar: ");
+			aplicacion = sc4.next();
+			if (aplicaciones.search(aplicacion) == true)
+				System.out.println("La aplicación " + aplicacion + " sí se encuentra en la cola. \n");
+			else
+				System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+		}
 		
 		//Se prueba el metodo eliminar 
-		System.out.println("Ingrese la aplicacion que desea eliminar: ");
-		String apli = sc3.next();
-		aplicaciones.deQueue(apli);
-		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
+		System.out.println("¿Desea eliminar una aplicacion?");
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+		{
+			System.out.println("Ingrese la aplicacion que desea eliminar: ");
+			String apli = sc3.next();
+			aplicaciones.deQueue(apli);
+			System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
+		}
 		
 		//Se comprueba si la cola esta vacia
-		System.out.println("La cola se encuentra vacía? " + aplicaciones.isEmpty());
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+		{
+			System.out.println("¿Desea saber si la cola esta vacia?");
+			System.out.println("La cola se encuentra vacía? " + aplicaciones.isEmpty());
+		}
 		
 		//Se prueba el metodo deleteQueue
 		aplicaciones.deleteQueue();
-		System.out.println("Se eliminaron todas las aplicaciones... " + aplicaciones);
-		
-		//Se comprueba si la cola esta vacia
-		System.out.println("La cola se encuentra vacía? " + aplicaciones.isEmpty());
+		System.out.println("¿Desea eliminar todas las aplicaciones?");
+		confirma=scCon.nextBoolean();
+		if(confirma=true)
+			System.out.println("Se eliminaron todas las aplicaciones... " + aplicaciones);
 	}
 }

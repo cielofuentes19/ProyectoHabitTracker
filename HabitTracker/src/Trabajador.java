@@ -29,6 +29,6 @@ public class Trabajador extends Usuario
 	@Override
 	public String toString()
 	{
-		return "Trabajador [centroTrabajo=" + centroTrabajo + ", cargo=" + cargo + "]";
+		return super.toString() + " [\n centroTrabajo=" + this.centroTrabajo + "\n cargo=" + this.cargo + "]";
 	}
 }

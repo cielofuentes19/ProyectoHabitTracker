@@ -58,13 +58,13 @@ public class Usuario extends Persona
 	
 	public boolean validarUsuario(String usu, String contra)
 	{
-		if(usu != getUsuario())
+		if(usu != this.getUsuario())
 		{
 			System.out.println("El usuario no es correcto...");
 			return false;
 		}
 		
-		if(contra != getContraseña())
+		else if(contra != this.getContraseña())
 		{
 			System.out.println("La contraseña no es correcta...");
 			return false;
@@ -77,7 +77,7 @@ public class Usuario extends Persona
 	@Override
 	public String toString()
 	{
-		return "Usuario [descripcion=" + descripcion + ", usuario=" + usuario + ", correo=" + correo + ", contraseña="
-				+ contraseña + "]";
+		return super.toString() + "\n descripcion: " + this.descripcion + "\n usuario=" + this.usuario + "\n correo=" + this.correo + "\n contraseña="
+				+ this.contraseña;
 	}
 }
