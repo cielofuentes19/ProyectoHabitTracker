@@ -23,7 +23,6 @@ public class Usuario extends Persona
 	}
 	public void setDescripcion(String descripcion)
 	{
-		System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
 		this.descripcion = descripcion;
 	}
 
@@ -34,7 +33,6 @@ public class Usuario extends Persona
 	}
 	public void setUsuario(String usuario)
 	{
-		System.out.println("Ingresar usuario: ");
 		this.usuario = usuario;
 	}
 
@@ -45,7 +43,6 @@ public class Usuario extends Persona
 	}
 	public void setCorreo(String correo)
 	{
-		System.out.println("Ingresar correo: ");
 		this.correo = correo;
 	}
 
@@ -56,19 +53,25 @@ public class Usuario extends Persona
 	}
 	public void setContraseña(String contraseña)
 	{
-		System.out.println("Ingresar contraseña: ");
-		while (contraseña.length() != 8)
-			System.out.println("La contraseña debe tener 8 digitos...");
 		this.contraseña = contraseña;
 	}
 	
-	public void validarUsuario(String usu, String contra)
+	public boolean validarUsuario(String usu, String contra)
 	{
-		while(usu != this.usuario)
+		if(usu != getUsuario())
+		{
 			System.out.println("El usuario no es correcto...");
-		while(contra != this.contraseña)
+			return false;
+		}
+		
+		if(contra != getContraseña())
+		{
 			System.out.println("La contraseña no es correcta...");
+			return false;
+		}
+		
 		System.out.println("Usuario Validado. Bienvenido :) \n");
+		return true;
 	}
 
 	@Override

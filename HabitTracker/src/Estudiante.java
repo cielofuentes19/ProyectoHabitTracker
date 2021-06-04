@@ -11,12 +11,11 @@ public class Estudiante extends Usuario
 		this.centroEstudio = centroEstudio;
 		this.carrera = carrera;
 	}
-	
+
 	//Set y Get del Centro de Estudio (Universidad, Instituto, etc.)
 	public String getCentroEstudio(){return centroEstudio;}
 	public void setCentroEstudio(String centroEstudio)
 	{
-		System.out.println("Ingresar Centro de Estudio: ");
 		this.centroEstudio = centroEstudio;
 	}
 
@@ -24,7 +23,6 @@ public class Estudiante extends Usuario
 	public String getCarrera(){return carrera;}
 	public void setCarrera(String carrera)
 	{
-		System.out.println("Ingresar Carrera que estudia: ");
 		this.carrera = carrera;
 	}
 

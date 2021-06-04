@@ -21,7 +21,6 @@ public class Persona
 	public String getNombres(){return this.nombres;}
 	public void setNombres(String nombres)
 	{
-		System.out.println("Ingresar Nombres: ");
 		this.nombres = nombres;
 	}
 	
@@ -29,7 +28,6 @@ public class Persona
 	public String getApellidos(){return this.apellidos;}
 	public void setApellidos(String apellidos)
 	{
-		System.out.println("Ingresar Apellidos: ");
 		this.apellidos = apellidos;
 	}
 
@@ -37,9 +35,6 @@ public class Persona
 	public int getEdad(){return this.edad;}
 	public void setEdad(int edad)
 	{
-		System.out.println("Ingresar edad: ");
-		while (edad > 120)
-			System.out.println("La edad debe no debe ser mayor de 120...");
 		this.edad = edad;
 	}
 	
@@ -47,9 +42,6 @@ public class Persona
 	public char getGenero(){return this.genero;}
 	public void setGenero(char genero)
 	{
-		System.out.println("Ingresar genero: M=masculino, F=femenino, N=no especifica ");
-		while(genero!='M' || genero!='F' || genero!='N')
-			System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
 		this.genero = genero;
 	}
 	
@@ -57,9 +49,6 @@ public class Persona
 	public String getDni(){return this.dni;}
 	public void setDni(String dni)
 	{
-		System.out.println("Ingresar DNI: ");
-		while (dni.length() != 8)
-			System.out.println("El DNI debe tener 8 digitos...");
 		this.dni = dni;
 	}
 

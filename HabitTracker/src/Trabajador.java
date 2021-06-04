@@ -16,7 +16,6 @@ public class Trabajador extends Usuario
 	public String getCentroTrabajo(){return centroTrabajo;}
 	public void setCentroTrabajo(String centroTrabajo)
 	{
-		System.out.println("Ingresar Centro de Trabajo: ");
 		this.centroTrabajo = centroTrabajo;
 	}
 
@@ -24,7 +23,6 @@ public class Trabajador extends Usuario
 	public String getCargo(){return cargo;}
 	public void setCargo(String cargo)
 	{
-		System.out.println("Ingresar cargo: ");
 		this.cargo = cargo;
 	}
 
