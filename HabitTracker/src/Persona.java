@@ -55,7 +55,7 @@ public class Persona
 	@Override
 	public String toString()
 	{
-		return " [\n Nombres:" + this.nombres + "\n apellidos=" + this.apellidos + "\n edad=" + this.edad + "\n genero=" + this.genero
-				+ "\n dni=" + this.dni + "]";
+		return "\nNombres: " + this.nombres + "\nApellidos: " + this.apellidos + "\nEdad: " + this.edad + "\nGenero: " + this.genero
+				+ "\nDNI: " + this.dni;
 	}
 }

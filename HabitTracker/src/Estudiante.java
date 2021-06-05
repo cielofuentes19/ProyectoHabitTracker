@@ -29,6 +29,6 @@ public class Estudiante extends Usuario
 	@Override
 	public String toString()
 	{
-		return super.toString() +" [\n centroEstudio=" + this.centroEstudio + "\n carrera=" + this.carrera + "]";
+		return super.toString() +"Centro de Estudio: " + this.centroEstudio + "\nCarrera: " + this.carrera;
 	}	
 }

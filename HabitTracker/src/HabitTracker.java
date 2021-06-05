@@ -1,9 +1,11 @@
 import java.util.Scanner;
+import java.time.*;
+import java.time.temporal.*;
 @SuppressWarnings("resource")
 
 public class HabitTracker
 {
-	public static void main(String[] args) throws ExceptionIsEmpty, ItemNoFound
+	public static void main(String[] args) throws ExceptionIsEmpty, ItemNoFound, ItemDuplicated
 	{
 		System.out.println("------- BIENVENIDO AL SISTEMA HABIT TRACKER --------");
 		System.out.println("-------- Tu asistente de manejo del tiempo ---------");
@@ -100,6 +102,8 @@ public class HabitTracker
 						String car = scF.next();
 						estu.setCarrera(car);
 						
+						System.out.println(" Los datos de estudiante son: "+ estu);
+						
 						caso = false;
 						break;
 					}
@@ -170,6 +174,8 @@ public class HabitTracker
 						String car = scF.next();
 						tra.setCargo(car);
 						
+						System.out.println(" Los datos del trabajador son: "+ tra);
+						
 						caso = false;
 						break;
 					}
@@ -232,6 +238,8 @@ public class HabitTracker
 						}
 						usua.setContraseña(con);
 						
+						System.out.println(" Los datos de usuario son: "+ usua);
+						
 						caso = false;
 						break;
 					}
@@ -284,14 +292,7 @@ public class HabitTracker
 			}
 		}	
 		
-		/*
-		//Temporizador del uso del usuario de las aplicaciones
-		StopWatch watch = new StopWatch();
- 		watch.start();
- 		watch.stop();
- 		long result = watch.getTime();
- 		*/
-		
+		//Cola de aplicaciones
 		Cola aplicaciones = new Cola();
 		String aplicacion = "";
 		Scanner sc1 = new Scanner(System.in);
@@ -308,7 +309,7 @@ public class HabitTracker
 			aplicacion = sc2.nextLine();
 			aplicaciones.enQueue(aplicacion);
 		}
-		System.out.println("\n" + "Aplicaciones ingresadas: \n" + aplicaciones);
+		System.out.println("\n" + "----- APLICACIONES INGRESADAS ----- \n" + aplicaciones);
 		
 		Scanner scCon = new Scanner(System.in);
 		boolean confirma = true;
@@ -316,19 +317,19 @@ public class HabitTracker
 		//Se prueba el metodo front
 		System.out.println("¿Desea saber el front de la cola?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
+		if(confirma==true)
 			System.out.println("El front de la cola es: " + aplicaciones.front() + "\n");
 
 		//Se prueba el metodo back
 		System.out.println("¿Desea saber el back de la cola?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
+		if(confirma==true)
 			System.out.println("El back de la cola es: " + aplicaciones.back() + "\n");
 		
 		//Se prueba el metodo search
 		System.out.println("¿Desea buscar una aplicacion?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
+		if(confirma==true)
 		{
 			System.out.println("Ingresar la aplicación que se quiere buscar: ");
 			aplicacion = sc4.next();
@@ -341,7 +342,7 @@ public class HabitTracker
 		//Se prueba el metodo eliminar 
 		System.out.println("¿Desea eliminar una aplicacion?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
+		if(confirma==true)
 		{
 			System.out.println("Ingrese la aplicacion que desea eliminar: ");
 			String apli = sc3.next();
@@ -350,18 +351,59 @@ public class HabitTracker
 		}
 		
 		//Se comprueba si la cola esta vacia
+		System.out.println("¿Desea saber si la cola esta vacia?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
-		{
-			System.out.println("¿Desea saber si la cola esta vacia?");
+		if(confirma==true)
 			System.out.println("La cola se encuentra vacía? " + aplicaciones.isEmpty());
-		}
 		
 		//Se prueba el metodo deleteQueue
-		aplicaciones.deleteQueue();
 		System.out.println("¿Desea eliminar todas las aplicaciones?");
 		confirma=scCon.nextBoolean();
-		if(confirma=true)
+		if(confirma==true)
+		{
+			aplicaciones.deleteQueue();
 			System.out.println("Se eliminaron todas las aplicaciones... " + aplicaciones);
+		}
+		
+		//Arbol de tiempo
+		Arbol<Integer> tiempo = new Arbol<Integer>();
+		Scanner sc5 = new Scanner(System.in);
+		System.out.println("¿Desea empezar a usar el sistema? ingrese true o false ");
+		boolean respue = sc5.nextBoolean();
+		while(respue==true)
+		{
+			System.out.println("Ingresar la aplicación que desea utilizar: ");
+			aplicacion = sc4.next();
+			if (aplicaciones.search(aplicacion) == true)
+				System.out.println("La aplicación " + aplicacion + " sí se encuentra en la cola. \n");
+			else
+				System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+			
+			Scanner sc6 = new Scanner(System.in);
+			
+			System.out.print("Ingrese la hora en la que inicio la aplicacion: (hh:mm)");
+            LocalTime inicio = LocalTime.parse(sc6.next());
+            System.out.print("Ingrese la hora en la que termino de usar la aplicacion: (hh:mm)");
+            LocalTime termino  = LocalTime.parse(sc6.next());
+
+            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+            System.out.println("\nEl tiempo recurrido usando la aplicacion: "+aplicacion+" fue de: " + minutos+"minutos.");
+            
+            tiempo.insert(minutos);
+            tiempo.inOrden();
+            
+            System.out.println("¿Desea calcular el tiempo de otra aplicación? Ingrese true o false ");
+    		respue = sc5.nextBoolean();
+		}
+		System.out.println("\nGracias por usar HabitTracker, vuelva pronto :) ");
+
+		
+		System.out.println("\n" + "----- TIEMPO INGRESADO ----- \n" + tiempo);
+        System.out.println("\nEl numero de nodos del arbol de tiempo es: " + tiempo.nroNodos());
+        System.out.println("\nEl numero de hojas del arbol de tiempo es: " + tiempo.nroHojas());
+        System.out.println("\nLa altura del arbol de tiempo es: " + tiempo.altura());
+        //System.out.println("\nLa altura del nodo del arbol b es: " + tiempo.retornarAlturaNodo(5));
+        System.out.println("\nEl area del arbol de tiempo es: " + tiempo.area());
+        //System.out.println("\n¿Se encuentra el 12 en el arbol b? " + tiempo.search(2));
 	}
 }
