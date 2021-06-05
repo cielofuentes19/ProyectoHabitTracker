@@ -1,3 +1,6 @@
+package structures;
+import exceptions.ItemDuplicated;
+import exceptions.ItemNoFound;
 
 public class Arbol<A extends Comparable<A>>
 {

@@ -1,3 +1,6 @@
+package structures;
+import exceptions.ExceptionIsEmpty;
+import exceptions.ItemNoFound;
 
 public interface InterfazCola
 {

@@ -1,20 +1,26 @@
+package structures;
+import exceptions.ExceptionIsEmpty;
+import exceptions.ItemNoFound;
 
 public class Cola implements InterfazCola
 {
 	private Node primero;
 	private Node ultimo;
+	private int tamaño;
 	
-	public Cola(Node primero, Node ultimo)
+	public Cola(Node primero, Node ultimo, int tamaño)
 	{
 		super();
 		this.primero = primero;
 		this.ultimo = ultimo;
+		this.tamaño = tamaño;
 	}
 
 	public Cola()
 	{
 		this.primero = null;
 		this.ultimo = null;
+		this.tamaño = 0;
 	}
 
 	//Insertar aplicaciones en la cola
@@ -34,7 +40,14 @@ public class Cola implements InterfazCola
 			nuevo.setNext(null);
 			this.ultimo = nuevo;
 		}
+		this.tamaño++;
 	}
+	
+	//Tamaño de la cola de aplicaciones
+	public int length() 
+    {
+        return tamaño;
+    }
 
 	//Eliminar aplicaciones en la cola
 	public void deQueue(String x) throws ExceptionIsEmpty, ItemNoFound
@@ -76,7 +89,8 @@ public class Cola implements InterfazCola
                  actual.setNext(anterior.getNext());
                  anterior = null;
                  System.out.println("Nodo eliminado");
-             }     
+             }   
+             this.tamaño--;
         }
         anterior = actual;
         actual = actual.getNext();
@@ -140,7 +154,10 @@ public class Cola implements InterfazCola
 	public void deleteQueue()
 	{
 		while(this.primero != null)
+		{
 			this.primero = this.primero.getNext();
+			this.tamaño--;
+		}
 	}
 	
 	public String toString()
