@@ -2,13 +2,13 @@ package structures;
 import exceptions.ExceptionIsEmpty;
 import exceptions.ItemNoFound;
 
-public class Cola implements InterfazCola
+public class Cola<C> implements InterfazCola<C>
 {
-	private Node primero;
-	private Node ultimo;
+	private Node<C> primero;
+	private Node<C> ultimo;
 	private int tamaño;
 	
-	public Cola(Node primero, Node ultimo, int tamaño)
+	public Cola(Node<C> primero, Node<C> ultimo, int tamaño)
 	{
 		super();
 		this.primero = primero;
@@ -24,9 +24,9 @@ public class Cola implements InterfazCola
 	}
 
 	//Insertar aplicaciones en la cola
-	public void enQueue(String x)
+	public void enQueue(C x)
 	{
-		Node nuevo = new Node(x);
+		Node <C> nuevo = new Node<C>(x);
 		
 		if(this.isEmpty())
 		{
@@ -50,11 +50,11 @@ public class Cola implements InterfazCola
     }
 
 	//Eliminar aplicaciones en la cola
-	public void deQueue(String x) throws ExceptionIsEmpty, ItemNoFound
+	public void deQueue(C x) throws ExceptionIsEmpty, ItemNoFound
     {
-        Node actual = new Node(x);
+        Node<C> actual = new Node<C>(x);
         actual = this.primero;
-        Node anterior = null;
+        Node<C> anterior = null;
         
         if (actual==null) 
         {
@@ -97,7 +97,7 @@ public class Cola implements InterfazCola
     }
 		
 	//Retorna elemento inicial de la cola
-	public Node front() throws ExceptionIsEmpty
+	public Node<C> front() throws ExceptionIsEmpty
 	{
 		if(!this.isEmpty())
 		{
@@ -110,7 +110,7 @@ public class Cola implements InterfazCola
 	}
 
 	//Retorna elemento final de la cola
-	public Node back() throws ExceptionIsEmpty
+	public Node<C> back() throws ExceptionIsEmpty
 	{
 		if(!this.isEmpty())
 		{
@@ -136,13 +136,13 @@ public class Cola implements InterfazCola
 	}
 
 	//Buscar aplicacion en la cola
-	public boolean search(String x) throws ItemNoFound
+	public boolean search(C x) throws ItemNoFound
 	{
 		if (this.isEmpty())
 			throw new ItemNoFound("No hay elementos en la cola...");
 		else 
 		{
-			Node aux = this.primero;
+			Node<C> aux = this.primero;
 			for (int i = 0; aux != null; aux = aux.getNext(), i++) 
 				if (aux.getData().equals(x))
 					return true;
@@ -163,7 +163,7 @@ public class Cola implements InterfazCola
 	public String toString()
 	{
 		String str = "";
-		Node aux = this.primero;
+		Node<C> aux = this.primero;
 		
 		if(primero != null)
 		{

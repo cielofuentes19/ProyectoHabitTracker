@@ -297,7 +297,7 @@ public class HabitTracker
 		try
 		{
 			//Cola de aplicaciones
-			Cola aplicaciones = new Cola();
+			Cola <String> aplicaciones = new Cola();
 			String aplicacion = "";
 			Scanner sc1 = new Scanner(System.in);
 			Scanner sc2 = new Scanner(System.in);
@@ -319,19 +319,19 @@ public class HabitTracker
 			boolean confirma = true;
 			
 			//Se prueba el metodo front
-			System.out.println("\n¿Desea saber el front de la cola?");
+			System.out.println("\n¿Desea saber el front de la cola? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 				System.out.println("El front de la cola es: " + aplicaciones.front() + "\n");
 
 			//Se prueba el metodo back
-			System.out.println("\n¿Desea saber el back de la cola?");
+			System.out.println("\n¿Desea saber el back de la cola? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 				System.out.println("El back de la cola es: " + aplicaciones.back() + "\n");
 			
 			//Se prueba el metodo search
-			System.out.println("\n¿Desea buscar una aplicacion?");
+			System.out.println("\n¿Desea buscar una aplicacion? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 			{
@@ -344,7 +344,7 @@ public class HabitTracker
 			}
 			
 			//Se prueba el metodo eliminar 
-			System.out.println("\n¿Desea eliminar una aplicacion?");
+			System.out.println("\n¿Desea eliminar una aplicacion? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 			{
@@ -355,13 +355,13 @@ public class HabitTracker
 			}
 			
 			//Se comprueba si la cola esta vacia
-			System.out.println("\n¿Desea saber si la cola esta vacia?");
+			System.out.println("\n¿Desea saber si la cola esta vacia? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 				System.out.println("La cola se encuentra vacía? " + aplicaciones.isEmpty());
 			
 			//Se prueba el metodo deleteQueue
-			System.out.println("\n¿Desea eliminar todas las aplicaciones?");
+			System.out.println("\n¿Desea eliminar todas las aplicaciones? TRUE o FALSE");
 			confirma=scCon.nextBoolean();
 			if(confirma==true)
 			{
