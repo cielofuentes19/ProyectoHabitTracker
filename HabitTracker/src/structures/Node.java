@@ -1,28 +1,28 @@
 package structures;
 
-public class Node
+public class Node<E>
 {
-	private String data;
-	private Node next;
-
-	public Node(String data)
-	{
-		this(data, null);
+	protected E data;
+	protected Node<E> next;
+	
+	public Node(E data)
+	{ 
+		this (data, null); 
 	}
 	
-	public Node(String data, Node next)
+	public Node(E data, Node<E> next)
 	{
-		this.data= data;
-		this.next= next;	
+		this.data = data;
+		this.next = next;
 	}
-
+	
 	//Get y Set de Data
-	public String getData() {return this.data;}
-	public void setData(String data) {this.data =data;}
+	public E getData() {return this.data;}	
+	public void setData(E data) {this.data = data;}
 	
 	//Get y Set de Next
-	public Node getNext() {return this.next;}
-	public void setNext(Node next) {this.next=next;}
+	public Node<E> getNext() {return this.next;}
+	public void setNext(Node<E> next) {this.next = next;}
 	
 	//ToString
 	public String toString()
