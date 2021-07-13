@@ -1,5 +1,5 @@
 
-public class Cola implements InterfazCola
+public class Cola<E extends Comparable<E>> implements InterfazCola
 {
 	private Node primero;
 	private Node ultimo;
