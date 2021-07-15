@@ -20,238 +20,231 @@ public class HabitTracker
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//Ingreso de Usuario
-		System.out.println("\n¿Cuenta con un usuario? true or false: ");
-		boolean respuesta = sc.nextBoolean();
+		System.out.println("\nPrimero crearemos tu usuario...");
+		boolean caso = true;
 		
-		if(respuesta == false)
+		while (caso == true)
 		{
-			System.out.println("\nPrimero crearemos tu usuario...");
-			boolean caso = true;
+			System.out.println("\n¿Eres Estudiante (E), Trabajador (T) o un Usuario General(U)?");
+			String resp = sc.next();
 			
-			while (caso == true)
+			Scanner scF = new Scanner(System.in);
+			scF.useDelimiter("\n");
+			
+			switch(resp)
 			{
-				System.out.println("\n¿Eres Estudiante (E), Trabajador (T) o un Usuario General(U)?");
-				String resp = sc.next();
-				
-				Scanner scF = new Scanner(System.in);
-				scF.useDelimiter("\n");
-				
-				switch(resp)
+				case("E"):
 				{
-					case("E"):
-					{
-						System.out.println("Ingresar Nombres: ");
-						String nombres = scF.next();
-						estu.setNombres(nombres);
-						
-						System.out.println("Ingresar Apellidos: ");
-						String apellidos = scF.next();
-						estu.setApellidos(apellidos);
-						
-						System.out.println("Ingresar Edad: ");
-						int edad = sc.nextInt();
-						while (edad > 120)
-						{
-							System.out.println("La edad debe no debe ser mayor de 120...");
-							edad = sc.nextInt();
-						}
-						estu.setEdad(edad);
-						
-						System.out.println("Ingresar genero: M=masculino, F=femenino, N=no especifica ");
-						char genero = sc.next().charAt(0);
-						while (genero!='M' && genero!='F' && genero!='N')
-						{
-							System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
-							genero = sc.next().charAt(0);
-						}
-						estu.setGenero(genero);
-						
-						System.out.println("Ingresar DNI: ");
-						String dni = sc.next();
-						while (dni.length() != 8)
-						{
-							System.out.println("El DNI debe tener 8 digitos...");
-							dni = sc.next();
-						}
-						estu.setDni(dni);
-						
-						System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
-						String des = scF.next();
-						estu.setDescripcion(des);
-						
-						System.out.println("Ingresar Usuario: ");
-						String usu = sc.next();
-						estu.setUsuario(usu);
-						
-						System.out.println("Ingresar Correo: ");
-						String cor = sc.next();
-						estu.setCorreo(cor);
-						
-						System.out.println("Ingresar Contraseña: ");
-						String con = sc.next();
-						while (con.length() < 8)
-						{
-							System.out.println("La contraseña debe tener minimo 8 digitos...");
-							con = sc.next();
-						}
-						estu.setContraseña(con);
-						
-						System.out.println("Ingresar Centro de Estudio: ");
-						String cent = scF.next();
-						estu.setCentroEstudio(cent);
-						
-						System.out.println("Ingresar Carrera que estudia: ");
-						String car = scF.next();
-						estu.setCarrera(car);
-						
-						System.out.println("\nLos datos de estudiante son: "+ estu);
-						
-						caso = false;
-						break;
-					}
+					System.out.println("Ingresar Nombres: ");
+					String nombres = scF.next();
+					estu.setNombres(nombres);
 					
-					case("T"):
-					{						
-						System.out.println("Ingresar Nombres: ");
-						String nombres = scF.next();
-						tra.setNombres(nombres);
-						
-						System.out.println("Ingresar Apellidos: ");
-						String apellidos = scF.next();
-						tra.setApellidos(apellidos);
-						
-						System.out.println("Ingresar Edad: ");
-						int edad = sc.nextInt();
-						while (edad > 120)
-						{
-							System.out.println("La edad debe no debe ser mayor de 120...");
-							edad = sc.nextInt();
-						}
-						tra.setEdad(edad);
-						
-						System.out.println("Ingresar genero: M=masculino, F=femenino, N=no especifica ");
-						char genero = sc.next().charAt(0);
-						while (genero!='M' && genero!='F' && genero!='N')
-						{
-							System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
-							genero = sc.next().charAt(0);
-						}
-						tra.setGenero(genero);
-						
-						System.out.println("Ingresar DNI: ");
-						String dni = sc.next();
-						while (dni.length() != 8)
-						{
-							System.out.println("El DNI debe tener 8 digitos...");
-							dni = sc.next();
-						}
-						tra.setDni(dni);
-						
-						System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
-						String des = scF.next();
-						tra.setDescripcion(des);
-						
-						System.out.println("Ingresar Usuario: ");
-						String usu = sc.next();
-						tra.setUsuario(usu);
-						
-						System.out.println("Ingresar Correo: ");
-						String cor = sc.next();
-						tra.setCorreo(cor);
-						
-						System.out.println("Ingresar Contraseña: ");
-						String con = sc.next();
-						while (con.length() < 8)
-						{
-							System.out.println("La contraseña debe tener minimo 8 digitos...");
-							con = sc.next();
-						}
-						tra.setContraseña(con);
-						
-						System.out.println("Ingresar Centro de Trabajo: ");
-						String cent = scF.next();
-						tra.setCentroTrabajo(cent);
-						
-						System.out.println("Ingresar Cargo: ");
-						String car = scF.next();
-						tra.setCargo(car);
-						
-						System.out.println("\\nLos datos del trabajador son: "+ tra);
-						
-						caso = false;
-						break;
-					}
+					System.out.println("Ingresar Apellidos: ");
+					String apellidos = scF.next();
+					estu.setApellidos(apellidos);
 					
-					case("U"):
+					System.out.println("Ingresar Edad: ");
+					int edad = sc.nextInt();
+					while (edad > 120)
 					{
-						System.out.println("Ingresar Nombres: ");
-						String nombres = scF.next();
-						usua.setNombres(nombres);
-						
-						System.out.println("Ingresar Apellidos: ");
-						String apellidos = scF.next();
-						usua.setApellidos(apellidos);
-						
-						System.out.println("Ingresar Edad: ");
-						int edad = sc.nextInt();
-						while (edad > 120)
-						{
-							System.out.println("La edad debe no debe ser mayor de 120...");
-							edad = sc.nextInt();
-						}
-						usua.setEdad(edad);
-						
-						System.out.println("Ingresar Genero: M=masculino, F=femenino, N=no especifica ");
-						char genero = sc.next().charAt(0);
-						while (genero!='M' && genero!='F' && genero!='N')
-						{
-							System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
-							genero = sc.next().charAt(0);
-						}
-						usua.setGenero(genero);
-						
-						System.out.println("Ingresar DNI: ");
-						String dni = sc.next();
-						while (dni.length() != 8)
-						{
-							System.out.println("El DNI debe tener 8 digitos...");
-							dni = sc.next();
-						}
-						usua.setDni(dni);
-						
-						System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
-						String des = scF.next();
-						usua.setDescripcion(des);
-						
-						System.out.println("Ingresar Usuario: ");
-						String usu = sc.next();
-						usua.setUsuario(usu);
-						
-						System.out.println("Ingresar Correo: ");
-						String cor = sc.next();
-						usua.setCorreo(cor);
-						
-						System.out.println("Ingresar Contraseña: ");
-						String con = sc.next();
-						while (con.length() < 8)
-						{
-							System.out.println("La contraseña debe tener minimo 8 digitos...");
-							con = sc.next();
-						}
-						usua.setContraseña(con);
-						
-						System.out.println("\nLos datos de usuario son: "+ usua);
-						
-						caso = false;
-						break;
+						System.out.println("La edad debe no debe ser mayor de 120...");
+						edad = sc.nextInt();
 					}
+					estu.setEdad(edad);
 					
-					default:
+					System.out.println("Ingresar genero: M=masculino, F=femenino, N=no especifica ");
+					char genero = sc.next().charAt(0);
+					while (genero!='M' && genero!='F' && genero!='N')
 					{
-						System.out.println("Debe ingresar E, T o U...");
-						caso = true;
+						System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
+						genero = sc.next().charAt(0);
 					}
+					estu.setGenero(genero);
+					
+					System.out.println("Ingresar DNI: ");
+					String dni = sc.next();
+					while (dni.length() != 8)
+					{
+						System.out.println("El DNI debe tener 8 digitos...");
+						dni = sc.next();
+					}
+					estu.setDni(dni);
+					
+					System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
+					String des = scF.next();
+					estu.setDescripcion(des);
+					
+					System.out.println("Ingresar Usuario: ");
+					String usu = sc.next();
+					estu.setUsuario(usu);
+					
+					System.out.println("Ingresar Correo: ");
+					String cor = sc.next();
+					estu.setCorreo(cor);
+					
+					System.out.println("Ingresar Contraseña: ");
+					String con = sc.next();
+					while (con.length() < 8)
+					{
+						System.out.println("La contraseña debe tener minimo 8 digitos...");
+						con = sc.next();
+					}
+					estu.setContraseña(con);
+					
+					System.out.println("Ingresar Centro de Estudio: ");
+					String cent = scF.next();
+					estu.setCentroEstudio(cent);
+					
+					System.out.println("Ingresar Carrera que estudia: ");
+					String car = scF.next();
+					estu.setCarrera(car);
+					
+					System.out.println("\nLos datos de estudiante son: "+ estu);
+					
+					caso = false;
+					break;
+				}
+				
+				case("T"):
+				{						
+					System.out.println("Ingresar Nombres: ");
+					String nombres = scF.next();
+					tra.setNombres(nombres);
+					
+					System.out.println("Ingresar Apellidos: ");
+					String apellidos = scF.next();
+					tra.setApellidos(apellidos);
+					
+					System.out.println("Ingresar Edad: ");
+					int edad = sc.nextInt();
+					while (edad > 120)
+					{
+						System.out.println("La edad debe no debe ser mayor de 120...");
+						edad = sc.nextInt();
+					}
+					tra.setEdad(edad);
+					
+					System.out.println("Ingresar genero: M=masculino, F=femenino, N=no especifica ");
+					char genero = sc.next().charAt(0);
+					while (genero!='M' && genero!='F' && genero!='N')
+					{
+						System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
+						genero = sc.next().charAt(0);
+					}
+					tra.setGenero(genero);
+					
+					System.out.println("Ingresar DNI: ");
+					String dni = sc.next();
+					while (dni.length() != 8)
+					{
+						System.out.println("El DNI debe tener 8 digitos...");
+						dni = sc.next();
+					}
+					tra.setDni(dni);
+					
+					System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
+					String des = scF.next();
+					tra.setDescripcion(des);
+					
+					System.out.println("Ingresar Usuario: ");
+					String usu = sc.next();
+					tra.setUsuario(usu);
+					
+					System.out.println("Ingresar Correo: ");
+					String cor = sc.next();
+					tra.setCorreo(cor);
+					
+					System.out.println("Ingresar Contraseña: ");
+					String con = sc.next();
+					while (con.length() < 8)
+					{
+						System.out.println("La contraseña debe tener minimo 8 digitos...");
+						con = sc.next();
+					}
+					tra.setContraseña(con);
+					
+					System.out.println("Ingresar Centro de Trabajo: ");
+					String cent = scF.next();
+					tra.setCentroTrabajo(cent);
+					
+					System.out.println("Ingresar Cargo: ");
+					String car = scF.next();
+					tra.setCargo(car);
+					
+					System.out.println("\\nLos datos del trabajador son: "+ tra);
+					
+					caso = false;
+					break;
+				}
+				
+				case("U"):
+				{
+					System.out.println("Ingresar Nombres: ");
+					String nombres = scF.next();
+					usua.setNombres(nombres);
+					
+					System.out.println("Ingresar Apellidos: ");
+					String apellidos = scF.next();
+					usua.setApellidos(apellidos);
+					
+					System.out.println("Ingresar Edad: ");
+					int edad = sc.nextInt();
+					while (edad > 120)
+					{
+						System.out.println("La edad debe no debe ser mayor de 120...");
+						edad = sc.nextInt();
+					}
+					usua.setEdad(edad);
+					
+					System.out.println("Ingresar Genero: M=masculino, F=femenino, N=no especifica ");
+					char genero = sc.next().charAt(0);
+					while (genero!='M' && genero!='F' && genero!='N')
+					{
+						System.out.println("Este caracter no esta permitido. Ingresar de nuevo...");
+						genero = sc.next().charAt(0);
+					}
+					usua.setGenero(genero);
+					
+					System.out.println("Ingresar DNI: ");
+					String dni = sc.next();
+					while (dni.length() != 8)
+					{
+						System.out.println("El DNI debe tener 8 digitos...");
+						dni = sc.next();
+					}
+					usua.setDni(dni);
+					
+					System.out.println("Ingresar la razon por la que desea usar Habit Tracker :) : ");
+					String des = scF.next();
+					usua.setDescripcion(des);
+					
+					System.out.println("Ingresar Usuario: ");
+					String usu = sc.next();
+					usua.setUsuario(usu);
+					
+					System.out.println("Ingresar Correo: ");
+					String cor = sc.next();
+					usua.setCorreo(cor);
+					
+					System.out.println("Ingresar Contraseña: ");
+					String con = sc.next();
+					while (con.length() < 8)
+					{
+						System.out.println("La contraseña debe tener minimo 8 digitos...");
+						con = sc.next();
+					}
+					usua.setContraseña(con);
+					
+					System.out.println("\nLos datos de usuario son: "+ usua);
+					
+					caso = false;
+					break;
+				}
+				
+				default:
+				{
+					System.out.println("Debe ingresar E, T o U...");
+					caso = true;
 				}
 			}
 		}
@@ -306,7 +299,7 @@ public class HabitTracker
 
 			//Se prueba el metodo Insert
 			System.out.println("Ingresar las 5 aplicaciones que desea trackear: ");
-			for(int i = 0; i<6; i++)
+			for(int i = 0; i<5; i++)
 			{
 				aplicacion = sc1.nextLine();
 				aplicaciones.enQueue(aplicacion);
@@ -383,12 +376,15 @@ public class HabitTracker
 			HashC<String> sabado = new HashC<String>(5);
 			HashC<String> domingo = new HashC<String>(5);
 
-			
 			Scanner sc4 = new Scanner(System.in);
 			System.out.println("\n¿Desea utilizar el monitor de aplicaciones? Ingrese true o false: ");
 			boolean respue = sc4.nextBoolean();
 			while(respue==true)
 			{
+				Scanner scUser = new Scanner(System.in);
+				System.out.println("\n¿Eres Estudiante (E), Trabajador (T) o un Usuario General(U)?");
+				String user = scUser.next();
+				
 				Scanner sc5 = new Scanner(System.in);
 				System.out.println("\n-----MENU DE OPCIONES-----");
 				System.out.println("\nLunes = L");
@@ -407,7 +403,8 @@ public class HabitTracker
 				{
 					case("L"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -425,6 +422,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia lunes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -437,7 +453,8 @@ public class HabitTracker
 					}
 					case("M"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -455,6 +472,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia martes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -467,7 +503,8 @@ public class HabitTracker
 					}	
 					case("Mi"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -485,6 +522,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia miercoles la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -497,7 +553,8 @@ public class HabitTracker
 					}
 					case("J"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -515,6 +572,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia jueves la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -527,7 +603,8 @@ public class HabitTracker
 					}
 					case("V"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -545,6 +622,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia viernes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -557,7 +653,8 @@ public class HabitTracker
 					}
 					case("S"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -575,6 +672,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia sabado la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				           
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -587,7 +703,8 @@ public class HabitTracker
 					}
 					case("D"):
 					{	
-						while(preg == true) {
+						while(preg == true)
+						{
 							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
 							while(aplicaciones.search(aplicacion) != true)
@@ -605,6 +722,25 @@ public class HabitTracker
 		
 				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
 				            System.out.println("\nEl dia domingo la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            
+				            if(user == "U")
+				            	if(minutos>180)
+				            		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				            	else if(minutos<=179)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    		
+				    		if(user == "T")
+				    			if(minutos>210)
+				    				System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    			else if(minutos<209)
+				    				System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				    	       	
+				    	    if(user == "E")
+				    	    	if(minutos>270)
+				    	    		System.out.println("\nAVISO: Esta mucho tiempo frente a la pantalla. Tome un descanso. :(");
+				    	    	else if(minutos<269)
+				      	 			System.out.println("\nFELICITACIONES: Esta mejorando sus habitos. Siga asi. :)");
+				            
 				            tiempo.insert(minutos);
 				            tiempo.inOrden();
 				            
@@ -615,7 +751,7 @@ public class HabitTracker
 						}
 						break;
 					}
-	            
+				}
 	            System.out.println("Desea monitorear el tiempo empleado en otro dia de la semana? TRUE o FALSE: ");
 	    		respue = sc4.nextBoolean();
 			}
@@ -705,7 +841,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -716,7 +853,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -731,7 +869,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -742,7 +881,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -757,7 +897,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -768,7 +909,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -783,7 +925,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -794,7 +937,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -809,7 +953,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -820,7 +965,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -835,7 +981,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -846,7 +993,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -861,7 +1009,8 @@ public class HabitTracker
 						
 						System.out.println("Desea buscar alguna aplicación? ");
 						boolean preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nBUSQUEDA:");
 							System.out.println("\n¿Que aplicacion desea buscar?: ");
 							String apli1 = sc6.next();
@@ -872,7 +1021,8 @@ public class HabitTracker
 						
 						System.out.println("Desea borrar alguna aplicación? ");
 						preg2 = sc6.hasNextBoolean();
-						if(preg2 == true) {
+						if(preg2 == true)
+						{
 							System.out.println("\nELIMINACION:");
 							System.out.println("\n¿Que aplicacion desea eliminar?: ");
 							String apli2 = sc6.next();
@@ -882,6 +1032,7 @@ public class HabitTracker
 						}
 					}	
 				}
+				
 				System.out.println("\n¿Desea revisar los reportes de otro dia de la semana? TRUE o FALSE: ");
 				reporte = sc6.nextBoolean();
 			}
