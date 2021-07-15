@@ -316,7 +316,7 @@ public class HabitTracker
 			Scanner scCon = new Scanner(System.in);
 			boolean confirma = true;
 			
-			System.out.println("\nSi tiene alguna duda o quiere modificar las aplicaciones que ingreso escriba TRUE: ");
+			System.out.println("\nTiene alguna consulta o desea modificar las aplicaciones a utilizar? TRUE or FALSE: ");
 			confirma=scCon.nextBoolean();
 			
 			if(confirma==true)
@@ -380,9 +380,12 @@ public class HabitTracker
 			HashC<String> miercoles = new HashC<String>(5);
 			HashC<String> jueves = new HashC<String>(5);
 			HashC<String> viernes = new HashC<String>(5);
+			HashC<String> sabado = new HashC<String>(5);
+			HashC<String> domingo = new HashC<String>(5);
+
 			
 			Scanner sc4 = new Scanner(System.in);
-			System.out.println("\n¿Desea empezar a usar el sistema? Ingrese true o false: ");
+			System.out.println("\n¿Desea utilizar el monitor de aplicaciones? Ingrese true o false: ");
 			boolean respue = sc4.nextBoolean();
 			while(respue==true)
 			{
@@ -398,45 +401,229 @@ public class HabitTracker
 				
 				System.out.println("\nElija que dia desea monitorear: ");
 				String dia = sc5.next();
+				boolean preg = true;
 				
 				switch(dia)
 				{
 					case("L"):
-					{			
-						System.out.println("Ingresar la aplicación que desea utilizar: ");
-						aplicacion = sc3.next();
-						while(aplicaciones.search(aplicacion) != true)
-						{
-							System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
-							System.out.println("Vuelva a ingresar la aplicación que desea utilizar: ");
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
 							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia lunes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            lunes.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
 						}
-						System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
-						
-						Scanner sc6 = new Scanner(System.in);
-						System.out.print("Ingrese la hora en la que inicio la aplicacion: (hh:mm)");
-			            LocalTime inicio = LocalTime.parse(sc6.next());
-			            System.out.print("Ingrese la hora en la que termino de usar la aplicacion: (hh:mm)");
-			            LocalTime termino  = LocalTime.parse(sc6.next());
-	
-			            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
-			            System.out.println("\nEl tiempo recurrido usando la aplicacion: "+aplicacion+" fue de: " + minutos+"minutos.");
-			            tiempo.insert(minutos);
-			            tiempo.inOrden();
-			            
-			            lunes.insertListLinked(minutos, aplicacion);
+						break;
 					}
-					//Case de martes a domingo
-				}
+					case("M"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia martes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            martes.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}	
+					case("Mi"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia miercoles la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            miercoles.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}
+					case("J"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia jueves la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            jueves.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}
+					case("V"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia viernes la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            viernes.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}
+					case("S"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia sabado la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            sabado.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}
+					case("D"):
+					{	
+						while(preg == true) {
+							System.out.println("Ingrese la aplicación que desee monitorear: ");
+							aplicacion = sc3.next();
+							while(aplicaciones.search(aplicacion) != true)
+							{
+								System.out.println("La aplicación " + aplicacion + " no se encuentra en la cola. \n");
+								System.out.println("Vuelva a ingresar la aplicación a monitorear: ");
+								aplicacion = sc3.next();
+							}
+							System.out.println("La aplicación " + aplicacion + " si se encuentra en la cola. \n");
+							Scanner sc6 = new Scanner(System.in);
+							System.out.print("Ingrese la hora de inicio de la aplicacion: (hh:mm)");
+				            LocalTime inicio = LocalTime.parse(sc6.next());
+				            System.out.print("Ingrese la hora de finalizacion de la aplicacion: (hh:mm)");
+				            LocalTime termino  = LocalTime.parse(sc6.next());
+		
+				            int minutos = (int) ChronoUnit.MINUTES.between(inicio, termino);
+				            System.out.println("\nEl dia domingo la aplicacion "+aplicacion+" se utilizo un total de: " + minutos+" minutos.");
+				            tiempo.insert(minutos);
+				            tiempo.inOrden();
+				            
+				            domingo.insertListLinked(minutos, aplicacion);
+				            
+				            System.out.println("Desea monitorear otra aplicacion? true or false. ");
+				            preg = sc4.nextBoolean();
+						}
+						break;
+					}
 	            
-	            System.out.println("¿Desea calcular el tiempo de otra aplicación? Ingrese true o false ");
+	            System.out.println("Desea monitorear el tiempo empleado en otro dia de la semana? TRUE o FALSE: ");
 	    		respue = sc4.nextBoolean();
 			}
 			
 			Scanner scCon1 = new Scanner(System.in);
 			boolean confirm = true;
 			
-			System.out.println("\nSi tiene alguna duda o quiere modificar los tiempos que ingreso escriba TRUE: ");
+			System.out.println("\nTiene alguna duda o quiere modificar los tiempos que ingreso? TRUE o FALSE: ");
 			confirm=scCon1.nextBoolean();
 			
 			if(confirm==true)
@@ -508,29 +695,192 @@ public class HabitTracker
 				System.out.println("\nDomingo = D");
 				
 				System.out.println("\nElija de que dia desea ver el reporte: ");
-				String dia = sc6.next();
+				String dia1 = sc6.next();
 				
-				switch(dia)
+				switch(dia1)
 				{
 					case("L"):	
 					{
 						System.out.println("\nREPORTE EN HASH TABLE DEL LUNES: \n" + lunes);
 						
-						System.out.println("\nBUSQUEDA:");
-						System.out.println("\n¿Que aplicacion desea buscar?: ");
-						String apli1 = sc6.next();
-						System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
-						int tie1 = sc6.nextInt();
-						System.out.println("Se encontro: " + lunes.searchListLinked(tie1, apli1) + "\n");
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + lunes.searchListLinked(tie1, apli1) + "\n");
+						}
 						
-						System.out.println("\nELIMINACION:");
-						System.out.println("\n¿Que aplicacion desea eliminar?: ");
-						String apli2 = sc6.next();
-						System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
-						int tie2 = sc6.nextInt();
-						System.out.println("Se eliminara a: " + lunes.removeListLinked(tie2, apli2) + "\n");
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + lunes.removeListLinked(tie2, apli2) + "\n");
+						}
 					}
-					//Case de martes a domingo
+					case("M"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL MARTES: \n" + martes);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + martes.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + martes.removeListLinked(tie2, apli2) + "\n");
+						}
+					}
+					case("Mi"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL MIERCOLES: \n" + miercoles);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + miercoles.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + miercoles.removeListLinked(tie2, apli2) + "\n");
+						}
+					}
+					case("J"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL JUEVES: \n" + jueves);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + jueves.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + jueves.removeListLinked(tie2, apli2) + "\n");
+						}
+					}
+					case("V"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL VIERNES: \n" + viernes);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + viernes.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + viernes.removeListLinked(tie2, apli2) + "\n");
+						}
+					}
+					case("S"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL SABADO: \n" + sabado);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + sabado.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + sabado.removeListLinked(tie2, apli2) + "\n");
+						}
+					}
+					case("D"):	
+					{
+						System.out.println("\nREPORTE EN HASH TABLE DEL DOMINGO: \n" + domingo);
+						
+						System.out.println("Desea buscar alguna aplicación? ");
+						boolean preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nBUSQUEDA:");
+							System.out.println("\n¿Que aplicacion desea buscar?: ");
+							String apli1 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea buscar?: ");
+							int tie1 = sc6.nextInt();
+							System.out.println("Se encontro: " + domingo.searchListLinked(tie1, apli1) + "\n");
+						}
+						
+						System.out.println("Desea borrar alguna aplicación? ");
+						preg2 = sc6.hasNextBoolean();
+						if(preg2 == true) {
+							System.out.println("\nELIMINACION:");
+							System.out.println("\n¿Que aplicacion desea eliminar?: ");
+							String apli2 = sc6.next();
+							System.out.println("\n¿Que tiempo tiene la aplicacion que desea eliminar?: ");
+							int tie2 = sc6.nextInt();
+							System.out.println("Se eliminara a: " + domingo.removeListLinked(tie2, apli2) + "\n");
+						}
+					}	
 				}
 				System.out.println("\n¿Desea revisar los reportes de otro dia de la semana? TRUE o FALSE: ");
 				reporte = sc6.nextBoolean();
